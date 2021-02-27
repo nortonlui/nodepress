@@ -1,0 +1,30 @@
+<%- include("../../partials/header.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+
+<div class="container mt-5">
+    <form method="POST" action="/admin/project/saveProject">
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" name="title" class="form-control" id="nome" placeholder="Digite o nome do seu projeto">
+        </div>
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea rows="10" cols="5" id="description" class="form-control" name="description" placeholder="Escreva aqui a sua descrição"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Git</label>
+            <input type="text" name="linkGit" class="form-control" id="git" placeholder="O git do projeto">
+          </div>
+          <div class="form-group">
+            <label>Heroku</label>
+            <input type="text" name="linkHeroku" class="form-control" id="heroku" placeholder="O heroku do seu projeto">
+          </div>
+        <button class="btn btn-primary">Salvar</button>
+      </form>
+</div>
+
+
+
+<%- include("../../partials/footer.ejs") %>
+<%- include('../../partials/tinymce.ejs') %>
+<%- include('../../partials/configtiny2.ejs') %>   

@@ -1,0 +1,48 @@
+<%- include("../../partials/header.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+
+<body>
+    <div class="container">
+        <hr>
+             <% results.articles.rows.forEach((article)=>{ %>
+             <div class="card">
+                <div class="card-header">
+                    <h2><%= article.title %></h2>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-primary" href="/<%= article.slug %>">Artigo</a>
+                </div>
+            </div>
+            <br>
+        <% }) %>
+        <div class="row">
+            <div class="col col-12">
+                <% if (results.page > 2) { %>
+                    <!--<a style="float: left;" href="/admin/articles/page/<%= results.page - 1 %>"> <<< Anterior </a>-->
+                    <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                          <a class="page-link" href="/admin/articles/page/<%= results.page - 1 %>">Anterior &rarr;</a>
+                        </li>
+                    </ul>
+                <% } else if(results.page == 2) { %>
+                    <!-- <a style="float: left;" href="/"> <<< Prev </a> -->
+                    <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                          <a class="page-link" href="/"> &larr; Anterior</a>
+                        </li>
+                    </ul>
+                <% } %>
+                <% if (results.next) { %>
+                    <!--<a style="float: right ;" href="/admin/articles/page/<%= results.page + 1 %>"> Proxima >>></a>-->
+                    <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                          <a class="page-link" href="/admin/articles/page/<%= results.page + 1 %>">Proximo &rarr;</a>
+                        </li>
+                    </ul>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include("../../partials/footer.ejs") %>   

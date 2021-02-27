@@ -1,0 +1,42 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2>Editar artigo</h2>
+            </div>
+            <div class="card-body">
+                <label>Artigo:</label>
+                <form method="POST" action="/admin/articles/update">
+                    <input type="hidden" value="<%= article.id %>" name="id">
+                    <input class="form-control" type="text" name="title" value="<%= article.title %>">
+                    <br>
+                    <textarea rows="10" cols="5" id="article" class="form-control" name="body" placeholder="Escreva aqui o seu artigo"></textarea>
+                    <br>
+                    <label id="lbl-categ">Categoria</label>
+                    <select name="categoryId" class="form-control">
+                    <% categories.forEach((category)=>{ %> 
+                        
+                        <% if(category.id == article.categoryId) { %>
+                            <option value="<%= category.id %>" selected><%= category.title %></option>
+                        <% } else { %>
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <% } %>
+                        
+                    <% }) %>
+                    </select>
+                    <button id="btn-cadastrar" class="btn btn-success">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="content" class="content" style="display: none;">
+        <%- article.body %>
+    </div>
+</body>
+
+<%- include('../../partials/footer.ejs') %>
+<%- include('../../partials/tinymce.ejs') %>
+<%- include('../../partials/configtiny.ejs') %>

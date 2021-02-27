@@ -1,0 +1,31 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<body>
+    <div class="container mt-5">
+        <hr>
+        <h2>Projetos</h2>
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Git</th>
+                    <th>Heroku</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% projects.forEach((project)=>{ %>
+                <tr>
+                    <td><%= project.id %></td>
+                    <td><%= project.title %></td>
+                    <td><a href="<%= project.linkGit %>"><%= project.linkGit %></a></td>
+                    <td><a href="<%= project.linkHeroku %>"><%= project.linkHeroku %></a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<%- include('../../partials/footer.ejs') %>

@@ -1,0 +1,40 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<body>
+    <div class="container mt-5">
+        <h2>Projetos</h2>
+        <hr>
+            <a class="btn btn-success" href="/admin/projects/new">Nova projeto</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Git</th>
+                    <th>Heroku</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% projects.forEach((project)=>{ %>
+                <tr>
+                    <td><%= project.id %></td>
+                    <td><%= project.title %></td>
+                    <td><a href="<%= project.linkGit %>"><%= project.linkGit %></a></td>
+                    <td><a href="<%= project.linkHeroku %>"><%= project.linkHeroku %></a></td>
+                    <td>
+                        <a class="btn btn-warning" href="/admin/projects/edit/<%= project.id %>">Editar</a>
+                        <form id="form-delete" method="POST" action="/admin/projects/delete" onsubmit="confirmDelete(event, this)">
+                            <input type="hidden" value="<%= project.id %>" name="id">
+                            <button class="btn btn-danger" >Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+<%- include('../../partials/scripts.ejs') %>
+<%- include('../../partials/footer.ejs') %>
