@@ -1,4 +1,0 @@
-Para acessar a aplicação utilize a porta http://localhost:3000
-
-usuario: admin@admin.com.br
-senha: admin@123
